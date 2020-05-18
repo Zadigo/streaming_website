@@ -47,4 +47,5 @@ def fake_view(*args, **kwargs):
     """ This view should never be called because the URL paths
         that map here will be served by nginx directly.
     """
+    print(args, kwargs)
     raise Exception('This should never be called!')

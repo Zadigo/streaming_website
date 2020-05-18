@@ -39,10 +39,10 @@ class StopStream(View):
     def post(self, request, **kwargs):
         name = request.POST["name"]
         models.Stream.objects.filter(key=name).update(started_at=None)
-        return http.HttpResponse("OK")
+        return http.HttpResponse('OK')
 
 def fake_view(*args, **kwargs):
     """ This view should never be called because the URL paths
         that map here will be served by nginx directly.
     """
-    raise Exception("This should never be called!")
+    raise Exception('This should never be called!')

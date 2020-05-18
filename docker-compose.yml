@@ -5,7 +5,7 @@ services:
     build: ./mystreaming
     container_name: mystreaming
     ports:
-      - 8000:8000
+      - 4000:8000
     restart: always
 
   rtmp_server:

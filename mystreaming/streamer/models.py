@@ -18,12 +18,13 @@ class Stream(models.Model):
 
     @property
     def is_live(self):
-        return None
+        return self.started_on != None
 
     @property
     def stream_url(self):
-        return reverse('hls-url', args=[self.user.username])
+        return reverse('current_steam_url', args=[self.user.username])
 
 @receiver(post_save, sender=USER)
-def create_new_stream(sender, instance=None, created=False, **kwargs):
-    Stream.objects.create(user=instance)
+def create_new_stream(sender, instance, created, **kwargs):
+    if created:
+        Stream.objects.create(user=instance)

@@ -4,16 +4,7 @@ services:
   app:
     build: ./mystreaming
     container_name: mystreaming
+    ports:
+      - 8000:8000
     restart: always
 
-  enginx:
-    build: ./docker/nginx
-    container_name: enginx
-    restart: always
-    ports:
-      - 40:80
-      - 443:443
-      - 1935:1935
-    depends_on: 
-      - "app"
-      

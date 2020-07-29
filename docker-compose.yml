@@ -1,24 +1,24 @@
 version: '3.7'
 
 services:
-  app:
+  web:
     build: ./mystreaming
-    container_name: mystreaming
+    container_name: "mystreaming"
     ports:
-      - 4000:8000
+      - 8000:8000
     restart: always
     volumes:
       - ./mystreaming:/app
 
-  rtmp_server:
+  rtmp:
     build: ./docker/nginx
-    container_name: rtmp_enginx
+    container_name: "nginx_rtmp"
     ports: 
       - 8000:8000
       - 443:443
       - 1935:1935
     restart: always
 
-  ffmpeg_server:
+  ffmpeg:
     build: ./docker/ffmpeg
-    container_name: ffmpeg_encoding
+    container_name: "ffmpeg_encoder"

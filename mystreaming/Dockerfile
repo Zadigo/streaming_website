@@ -5,9 +5,6 @@ ENV PYTHONDONTWRITEBYTECODE 1
 
 LABEL "com.mystreaming.vendor"="mystreaming"
 
-# COPY ./start.sh /start/
-# RUN chmod +x ./start/start.sh
-
 RUN mkdir /app
 
 WORKDIR /app

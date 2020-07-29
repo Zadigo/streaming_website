@@ -24,7 +24,8 @@ EXPOSE 8000
 # Start project using a simple script file
 # ENTRYPOINT [ "../start/start.sh" ]
 # ...or with development server
-ENTRYPOINT [ "python", "/app/manage.py", "runserver", "0.0.0.0:8000" ]
+CMD [ "runserver", "0.0.0.0:8000" ]
+ENTRYPOINT [ "python", "/app/manage.py" ]
 # CMD pipenv run python manage.py runserver 0.0.0.0:8000
 # ...or Gunicorn for production purposes
 # CMD gunicorn nawoka.wsgi -w 4 -b 0.0.0.0:8000 --chdir=/code/nawoka --log-file -

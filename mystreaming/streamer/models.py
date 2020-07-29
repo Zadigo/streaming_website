@@ -29,7 +29,7 @@ class Stream(models.Model):
 
     @property
     def stream_url(self):
-        return reverse('current_steam_url', args=[self.user.username])
+        return reverse('stream:live_stream', args=[self.user.username])
 
 
 @receiver(post_save, sender=MYUSER)

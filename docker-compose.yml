@@ -7,6 +7,8 @@ services:
     ports:
       - 4000:8000
     restart: always
+    volumes:
+      - ./mystreaming:/app
 
   rtmp_server:
     build: ./docker/nginx
@@ -16,3 +18,7 @@ services:
       - 443:443
       - 1935:1935
     restart: always
+
+  ffmpeg_server:
+    build: ./docker/ffmpeg
+    container_name: ffmpeg_encoding

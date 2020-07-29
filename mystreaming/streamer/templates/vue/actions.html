@@ -1,0 +1,41 @@
+<script>
+    var buttoncomponent = {
+        props: ["color", "btnname", "method"],
+        template: `
+        <button @click='streamaction' class='btn-large' :class='color'>
+            <i v-if='method==="start"' class='material-icons left'>play_arrow</i>
+            <i v-else class='material-icons left'>stop</i>
+            {{ btnname }}
+        </button>
+        `,
+        methods: {
+            geturl: function () {
+                if (this.$props.method == "start") {
+                    return "/start"
+                } else {
+                    return "/stop"
+                }
+            },
+            streamaction: function () {
+                var formdata = new FormData()
+                formdata.append("key", "a337a1bc1984c1568dae")
+                var promise = new Promise((resolve, reject) => {
+                    var xhr = new XMLHttpRequest()
+                    xhr.responseType = "json"
+                    xhr.open("POST", this.geturl())
+                    xhr.send(formdata)
+                    resolve(xhr.response)
+                })
+                promise.then(response => {
+                    setTimeout(() => {
+                        window.location.href = response.redirect_to
+                    }, 4000)
+                })
+            }
+        }
+    }
+    var streamapp = new Vue({
+        el: "#app",
+        components: { buttoncomponent }
+    })
+</script>
